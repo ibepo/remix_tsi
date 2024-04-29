@@ -1,8 +1,8 @@
-import { Pagination } from '@nextui-org/react';
-import type { MetaFunction } from '@remix-run/node';
-import { json } from '@remix-run/node';
-import { Link, useLoaderData, useSearchParams } from "@remix-run/react";
-import { prisma } from '~/prisma.server';
+import { Pagination } from '@nextui-org/react'
+import type { MetaFunction } from '@remix-run/node'
+import { json } from '@remix-run/node'
+import { Link, useLoaderData, useSearchParams } from '@remix-run/react'
+import { prisma } from '~/prisma.server'
 
 export const meta: MetaFunction = () => {
   return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }]
@@ -17,18 +17,18 @@ export const loader = async (c: LoaderFunctionArgs) => {
   const [posts, total] = await prisma.$transaction([
     prisma.post.findMany({
       orderBy: {
-        created_at: "desc"
+        created_at: 'desc',
       },
       // 分页查询
       take: PAGE_SIZE,
-      skip: (page - 1) * PAGE_SIZE
+      skip: (page - 1) * PAGE_SIZE,
     }),
-    prisma.post.count()
+    prisma.post.count(),
   ])
 
   return json({
     posts,
-    pageCount: Math.ceil(total / PAGE_SIZE)
+    pageCount: Math.ceil(total / PAGE_SIZE),
   })
 }
 
@@ -39,25 +39,27 @@ export default function Index() {
 
   return (
     <div>
-      <div className="p-12 flex flex-col gap-4">
+      <div className='flex flex-col gap-4 p-12'>
         {loaderData.posts.map(post => {
           return (
             <div key={post.id}>
-              <Link  to={`/posts/${post.id}`} className="text-xl" >
+              <Link to={`/posts/${post.id}`} className='text-xl'>
                 {post.title}
               </Link>
-              <div className="text-sm text-gray-400">
-                {post.created_at}
-              </div>
+              <div className='text-sm text-gray-400'>{post.created_at}</div>
             </div>
           )
         })}
       </div>
-     <Pagination page={page} total={loaderData.pageCount} onChange={page => {
+      <Pagination
+        page={page}
+        total={loaderData.pageCount}
+        onChange={page => {
           const newSearchParams = new URLSearchParams(searchParams)
           newSearchParams.set('page', String(page))
           setSearchParams(newSearchParams)
-        }} />
+        }}
+      />
     </div>
-  );
+  )
 }
