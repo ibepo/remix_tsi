@@ -1,16 +1,10 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
-// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
-// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "sqlite"
-  url      ="file:./data.db"
+  url      = "file:./data.db"
 }
 
 model Post {
@@ -20,8 +14,27 @@ model Post {
   created_at DateTime @default(now())
 }
 
-
 model User {
   username String @id
   password String
+}
+
+model weibo {
+  id              String    @id
+  bid             String
+  user_id         String?
+  screen_name     String?
+  text            String?
+  article_url     String?
+  topics          String?
+  at_users        String?
+  pics            String?
+  video_url       String?
+  location        String?
+  created_at      DateTime?
+  source          String?
+  attitudes_count Int?
+  comments_count  Int?
+  reposts_count   Int?
+  retweet_id      String?
 }
