@@ -5,7 +5,7 @@ import { Link, useLoaderData, useSearchParams } from '@remix-run/react'
 import { prisma } from '~/prisma.server'
 
 export const meta: MetaFunction = () => {
-  return [{ title: 'New Remix App' }, { name: 'description', content: 'Welcome to Remix!' }]
+  return [{ title: '观点英雄说' }, { name: 'description', content: '过滤钢铁圈优秀内容' }]
 }
 const PAGE_SIZE = 6
 
@@ -64,25 +64,26 @@ export default function Index() {
             <div key={weibo.id}>
               <Link to={`/posts/${weibo.id}`} className='text-xl'>
                 <div className='flex'>
-                  <div className='text-xs font-bold leading-relaxed'>{formatTextWithSemicolon(weibo.text)}</div>
+                  <div className='text-2xl font-bold leading-relaxed'>{weibo.text}</div>
                 </div>
-
-                <div className='text-xs text-gray-400'>{weibo.screen_name}</div>
+                <div className='mt-2 text-xs text-gray-400'>{weibo.screen_name}</div>
               </Link>
-              <div className='text-xs text-gray-400'>{weibo.created_at}</div>
+              <div className='mt-2 text-xs text-gray-400'>{weibo.created_at}</div>
             </div>
           )
         })}
       </div>
-      <Pagination
-        page={page}
-        total={loaderData.pageCount}
-        onChange={page => {
-          const newSearchParams = new URLSearchParams(searchParams)
-          newSearchParams.set('page', String(page))
-          setSearchParams(newSearchParams)
-        }}
-      />
+      <div className='flex justify-center'>
+        <Pagination
+          page={page}
+          total={loaderData.pageCount}
+          onChange={page => {
+            const newSearchParams = new URLSearchParams(searchParams)
+            newSearchParams.set('page', String(page))
+            setSearchParams(newSearchParams)
+          }}
+        />
+      </div>
     </div>
   )
 }
