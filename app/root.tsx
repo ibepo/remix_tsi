@@ -16,9 +16,11 @@ export default function App() {
       <body>
         <NextUIProvider>
           <Topbar />
-          <div className='container p-4 mx-auto'>
+          {/* <div className='container p-4 mx-auto'> */}
+          <div className='bg-fixed bg-left-top g-gradient-to-r from-white via-transparent to-white bg-size-10 bg-f4f4f6'>
             <Outlet />
           </div>
+          {/* </div> */}
         </NextUIProvider>
         <ScrollRestoration />
         <Scripts />

@@ -64,7 +64,7 @@ export default function Index() {
             <div key={weibo.id}>
               <Link to={`/posts/${weibo.id}`} className='text-xl'>
                 <div className='flex'>
-                  <div className='text-2xl font-bold leading-relaxed'>{weibo.text}</div>
+                  <div className='text-base font-bold leading-relaxed'>{weibo.text}</div>
                 </div>
                 <div className='mt-2 text-xs text-gray-400'>{weibo.screen_name}</div>
               </Link>

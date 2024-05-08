@@ -1,16 +1,14 @@
-import { json } from '@remix-run/node';
-import { useLoaderData } from '@remix-run/react';
-import { addDays, format } from 'date-fns';
+import { json } from '@remix-run/node'
+import { useLoaderData } from '@remix-run/react'
+import { addDays, format } from 'date-fns'
 
 export async function loader() {
-  const userId = 'F8A0FDD7272811F4E050A8C00E011B4C'
-  const token = `F8A0FDD7272811F4E050A8C00E011B4C-3a4e5833d8704a66a58683bb29a5d850`
-  let edate = format(addDays(new Date(), 1), 'yyyy-MM-dd')
-  let sdate = format(addDays(new Date(), 0), 'yyyy-MM-dd')
-  let keyword = ''
-  let pernum = 50
-  const apiUrl = `http://114.113.152.67:8118/API_V1/API_MSGBYMSSQL/MSG_INFO?keyword=${keyword}&sdate=${sdate}&edate=${edate}&pz=3,8&pagenum=1&pernum=${pernum}`
-
+  const edate = format(addDays(new Date(), 1), 'yyyy-MM-dd')
+  const sdate = format(addDays(new Date(), 0), 'yyyy-MM-dd')
+  const keyword = ''
+  const pernum = 30
+  const apiUrl = `http://114.113.152.67:8118/API_V1/API_MSGBYMSSQL/MSG_INFO?keyword=${keyword}&sdate=${sdate}&edate=${edate}&pz=&pagenum=1&pernum=${pernum}`
+  console.log(apiUrl)
   try {
     const response = await fetch(apiUrl)
     if (!response.ok) {
@@ -26,9 +24,9 @@ export async function loader() {
 export default function Page() {
   const messages = useLoaderData(typeof loader)
   return (
-    <>
+    <div className='container flex flex-col max-w-md p-3 rounded bg-slate-100 font-harmonysans '>
       <div>
-        <div className='container flex flex-col max-w-md px-0 py-4 bg-white font-harmonysans rounded-2xl'>
+        <div className='container flex flex-col max-w-md px-0 py-4 font-harmonysans rounded-2xl'>
           <div className='flex items-center justify-center'>
             <p className='text-[#1b1b1b] text-[20px] font-bold'> 唐宋短信</p>
             <div className='text-[#929292] text-[16px]'>({format(addDays(new Date(), 0), 'yyyy-MM-dd')})</div>
@@ -51,6 +49,6 @@ export default function Page() {
           ))}
         </div>
       </div>
-    </>
+    </div>
   )
 }

@@ -41,8 +41,8 @@ const UpperCentage = ({ item }) => {
 }
 
 export async function loader() {
-  let sdate = format(addDays(new Date(), -6), 'yyyy-MM-dd')
-  let edate = format(addDays(new Date(), 0), 'yyyy-MM-dd')
+  const sdate = format(addDays(new Date(), -6), 'yyyy-MM-dd')
+  const edate = format(addDays(new Date(), 0), 'yyyy-MM-dd')
 
   const token = `eyJhbGciOiJIUzI1NiIsImlhdCI6MTY5MDg1Mzc1NywiZXhwIjoxNjkwODU3MzU3fQ.eyJ1c2VyaWQiOjY2OH0.5BJ7JKEocndS2pe4g9G2-FkDrnLRFwHVomvjAJI1F5c`
   const apiUrl = `https://service.chinatsi.net/api_v1/wechat/data/billet/nationwideprice?begin=${sdate}&end=${edate}&token=${token}`
@@ -62,8 +62,8 @@ export async function loader() {
 export default function NationWideprice() {
   const data = useLoaderData(typeof loader)
   return (
-    <div className='container flex flex-col max-w-md py-4'>
-      <div className='text-2xl font-bold text-center text-gray-800 font-abel'>唐宋钢坯价格指数</div>
+    <div className='container flex flex-col max-w-md p-3 rounded bg-slate-100 font-harmonysans '>
+      <div className='my-2 text-2xl font-bold text-center text-gray-800 font-abel'>唐宋钢坯价格指数</div>
       <div className='flex w-full mb-2 justify-space'>
         <div className='flex-grow-[2] text-left'>日期</div>
         <div className='flex-1 mr-5 text-right'>当前值</div>
