@@ -1,21 +1,14 @@
-import type { MetaFunction } from '@remix-run/node'
-import Markdown from 'react-markdown'
-import remarkGfm from 'remark-gfm'
+import { useLoaderData } from '@remix-run/react';
+import HeatMap from '~/components/Heatmap';
+import { noticeWidePrice } from '~/fetch/tsi';
 
-export const meta: MetaFunction = () => {
-  return [{ title: 'NeoTsi' }, { name: 'description', content: 'Welcome to Remix!' }]
+export async function loader() {
+  return noticeWidePrice()
 }
 
-
 export default function Index() {
-const markdown = `
-
-## Overview
-* Follows [CommonMark](https://commonmark.org)
-* Has a lot of plugins
-
-`
+  const data = useLoaderData()
   return (
-         <Markdown remarkPlugins={[remarkGfm]}>{markdown}</Markdown>
+    <HeatMap data={data} />
   )
 }
