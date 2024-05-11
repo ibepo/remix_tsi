@@ -51,6 +51,9 @@ export default function Topbar() {
         <NavbarItem>
           <Link to='/card/notionwideprice'>notionwideprice</Link>
         </NavbarItem>
+        <NavbarItem>
+          <Link to='/card/heartmap'>heartmap</Link>
+        </NavbarItem>
       </NavbarContent>
       <NavbarContent justify='end'>
         {/* <NavbarItem className='hidden lg:flex'>

@@ -106,7 +106,7 @@ export default function Page() {
   const kanbans = useLoaderData(typeof loader)
   return (
     <>
-      <div className='container flex flex-col max-w-md p-3 rounded bg-slate-100 font-harmonysans '>
+      <div className='container flex flex-col max-w-md p-3 mx-auto rounded bg-slate-100 font-harmonysans '>
         <div className='flex items-end p-4 mt-10 font-alibaba-puhui'>
           <p className='text-5xl font-bold font-abel'>78.5</p>
           <p className='ml-1'>公斤</p>

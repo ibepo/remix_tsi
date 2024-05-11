@@ -62,7 +62,7 @@ export async function loader() {
 export default function NationWideprice() {
   const data = useLoaderData(typeof loader)
   return (
-    <div className='container flex flex-col max-w-md p-3 rounded bg-slate-100 font-harmonysans '>
+    <div className='container flex flex-col max-w-md p-3 mx-auto rounded bg-slate-100 font-harmonysans '>
       <div className='my-2 text-2xl font-bold text-center text-gray-800 font-abel'>唐宋钢坯价格指数</div>
       <div className='flex w-full mb-2 justify-space'>
         <div className='flex-grow-[2] text-left'>日期</div>

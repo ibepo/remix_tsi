@@ -58,7 +58,7 @@ export default function Index() {
 
   return (
     <div>
-      <div className='flex flex-col gap-4 p-12'>
+      <div className='container gap-4 p-12 mx-auto w-max-md'>
         {loaderData.weibos.map(weibo => {
           return (
             <div key={weibo.id}>

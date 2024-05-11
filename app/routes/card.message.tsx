@@ -24,7 +24,7 @@ export async function loader() {
 export default function Page() {
   const messages = useLoaderData(typeof loader)
   return (
-    <div className='container flex flex-col max-w-md p-3 rounded bg-slate-100 font-harmonysans '>
+    <div className='container flex flex-col max-w-md p-3 mx-auto rounded bg-slate-100 font-harmonysans '>
       <div>
         <div className='container flex flex-col max-w-md px-0 py-4 font-harmonysans rounded-2xl'>
           <div className='flex items-center justify-center'>
